@@ -1,4 +1,4 @@
-name: Build for Linux, Windows, Mac
+name: Build 2024.3 for Windows
 
 on: [workflow_dispatch, pull_request]
 
@@ -13,7 +13,7 @@ jobs:
 
     - name: Clone
       run: |
-        git clone https://github.com/openvinotoolkit/openvino_contrib -b releases/2023/0 --depth 1
+        git clone https://github.com/openvinotoolkit/openvino_contrib -b releases/2024/3 --depth 1
         git clone https://github.com/openvinotoolkit/testdata
     - name: Install Java
       uses: actions/setup-java@v1
@@ -22,9 +22,9 @@ jobs:
 
     - name: Download OpenVINO
       run: |
-        Invoke-WebRequest https://storage.openvinotoolkit.org/repositories/openvino/packages/2023.0/windows/w_openvino_toolkit_windows_2023.0.0.10926.b4452d56304_x86_64.zip -OutFile openvino.zip
+        Invoke-WebRequest https://storage.openvinotoolkit.org/repositories/openvino/packages/2024.3/windows/w_openvino_toolkit_windows_2024.3.0.16041.1e3b88e4e3f_x86_64.zip -OutFile openvino.zip
         Expand-Archive -Path openvino.zip -DestinationPath "C:\Program Files (x86)\Intel"
-        Move-Item -Path "C:\Program Files (x86)\Intel\w_openvino_toolkit_windows_2023.0.0.10926.b4452d56304_x86_64" -Destination "C:\Program Files (x86)\Intel\openvino"
+        Move-Item -Path "C:\Program Files (x86)\Intel\w_openvino_toolkit_windows_2024.3.0.16041.1e3b88e4e3f_x86_64" -Destination "C:\Program Files (x86)\Intel\openvino"
       shell: pwsh
 
     - name: Build bindings
